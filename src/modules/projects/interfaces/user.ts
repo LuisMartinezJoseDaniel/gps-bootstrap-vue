@@ -4,6 +4,8 @@ export interface User {
   name: string;
   phone: string;
   email: string;
+  idCatProvider: string;
+  idCatMvno: string;
 }
 
 export interface UserBackend {

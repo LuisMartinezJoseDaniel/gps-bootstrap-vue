@@ -48,7 +48,7 @@ try {
 </script>
 
 <template>
-  <div class="grid">
+  <div class="">
     <!-- Form -->
     <transaction-form></transaction-form>
     <!-- Table -->

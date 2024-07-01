@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { useUserForm } from '@/stores/useUserForm';
+import { storeToRefs } from 'pinia';
+
+const userStore = useUserForm();
+
+const { formUser } = storeToRefs(userStore);
 defineEmits([
   'update:role',
   'update:username',
@@ -7,23 +13,23 @@ defineEmits([
   'update:email',
   'close',
 ]);
-
+/*
 defineProps({
   role: { type: String, default: 'Star Wars' },
   username: { type: String, default: '' },
   name: { type: String, default: '' },
   phone: { type: String, default: '' },
   email: { type: String, default: '' },
-});
+});*/
 </script>
 
 <template>
-  <form method="dialog">
+  <form method="dialog" @submit.prevent="userStore.saveUser">
     <label class="form-control w-full">
       <div class="label">
         <span class="label-text">Role</span>
       </div>
-      <select @input="$emit('update:role', $event?.target?.value)" class="select select-bordered">
+      <select v-model="formUser.role" class="select select-bordered">
         <option disabled selected>Seleccionar</option>
 
         <option value="1">Operativo</option>
@@ -38,7 +44,7 @@ defineProps({
         <span class="label-text">Username</span>
       </div>
       <input
-        @input="$emit('update:username', $event?.target?.value)"
+        v-model="formUser.username"
         type="text"
         placeholder="Escribe tu Username"
         class="input input-bordered w-full"
@@ -49,7 +55,7 @@ defineProps({
         <span class="label-text">Nombre</span>
       </div>
       <input
-        @input="$emit('update:name', $event?.target?.value)"
+        v-model="formUser.name"
         type="text"
         placeholder="Escribe tu Nombre"
         class="input input-bordered w-full"
@@ -60,7 +66,7 @@ defineProps({
         <span class="label-text">Teléfono</span>
       </div>
       <input
-        @input="$emit('update:phone', $event?.target?.value)"
+        v-model="formUser.phone"
         type="text"
         placeholder="Escribe tu Teléfono"
         class="input input-bordered w-full"
@@ -71,7 +77,7 @@ defineProps({
         <span class="label-text">Correo</span>
       </div>
       <input
-        @input="$emit('update:email', $event?.target?.value)"
+        v-model="formUser.email"
         type="text"
         placeholder="Escribe tu Correo"
         class="input input-bordered w-full"
@@ -80,7 +86,7 @@ defineProps({
     <!-- if there is a button in form, it will close the modal -->
     <div class="mt-4 flex justify-end">
       <button class="btn me-4" @click="$emit('close')">Cerrar</button>
-      <button type="submit" class="btn btn-primary" @click="$emit('close')">Aceptar</button>
+      <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
   </form>
 </template>

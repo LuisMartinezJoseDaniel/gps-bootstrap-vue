@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import SideMenuItems from '@/modules/common/components/SideMenuItems.vue';
+import { RouterLink } from 'vue-router';
 </script>
 <template>
   <div class="drawer">
@@ -48,7 +49,7 @@ import SideMenuItems from '@/modules/common/components/SideMenuItems.vue';
                     </a>
                   </li>
                   <li><a>Settings</a></li>
-                  <li><a>Logout</a></li>
+                  <li><RouterLink to="/auth/login">Logout</RouterLink></li>
                 </ul>
               </div>
             </div>

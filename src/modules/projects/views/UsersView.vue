@@ -4,8 +4,7 @@ import SimpleModal from '@/modules/common/components/SimpleModal.vue';
 import UserForm from '@/modules/projects/components/UserForm.vue';
 import { useTitleStore } from '@/stores/titleStore';
 import { ref } from 'vue';
-import type { User } from '../interfaces/user';
-import { UserBackend } from '../interfaces/user';
+import type { User, UserBackend } from '../interfaces/user';
 
 const titleStore = useTitleStore();
 titleStore.setTitle('Usuarios');
